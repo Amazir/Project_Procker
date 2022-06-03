@@ -39,6 +39,9 @@
     <ClCompile Include="api\Offsets.cpp">
       <Filter>Source Files\api</Filter>
     </ClCompile>
+    <ClCompile Include="api\Config.cpp">
+      <Filter>Source Files\api</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="api\libs\ProcMem.h">
@@ -48,6 +51,9 @@
       <Filter>Header Files\api</Filter>
     </ClInclude>
     <ClInclude Include="api\Offsets.h">
+      <Filter>Header Files\api</Filter>
+    </ClInclude>
+    <ClInclude Include="api\Config.h">
       <Filter>Header Files\api</Filter>
     </ClInclude>
   </ItemGroup>

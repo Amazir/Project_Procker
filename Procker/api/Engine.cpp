@@ -1,5 +1,6 @@
 #include "Engine.h"
 
+
 Engine::Engine() {
 	// Getting into process
 	Alert(0, "Loading into CS:GO");
@@ -9,6 +10,9 @@ Engine::Engine() {
 	// Getting modules
 	Alert(0, "Getting modules");
 	mem->Module("client.dll");
+
+	// Create config's object
+	conf = new Config("data/configs/main.cfg");
 
 	// Starting threads
 	Threads();
@@ -35,15 +39,30 @@ void Engine::Threads() {
 
 void Engine::Thread_Misc() {
 	while (1) {
-		if (GetAsyncKeyState(VK_SPACE) & 0x8000) {
-			DWORD dwLocalPlayer = 
+		/*
+			********************************************************
+			************************** BHOP ************************
+			********************************************************
+		
+			Check if button is pressed
+		*/
+		if (conf->BHop_Enabled) {
+			if (!(GetAsyncKeyState(conf->BHop_Button) & 0x8000))
+				continue;
+			// Get local player object
+			DWORD dwLocalPlayer =
 				mem->Read<DWORD>(mem->dwClientAddress + Offsets::dwLocalPlayer);
 
+			// Check is player on the floor
 			if (mem->Read<int>(dwLocalPlayer + Offsets::m_fFlags) == 257) {
+				// If player is grounded then force jump
 				mem->Write(mem->dwClientAddress + Offsets::dwForceJump, 6);
-				Sleep(30);
+				// Sleep for optimization
+				this_thread::sleep_for(1ms);
 			}
 		}
-		Sleep(1);
+
+		// Sleep for optimization
+		this_thread::sleep_for(1ms);
 	}
 }

@@ -74,7 +74,7 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>false</ConformanceMode>
     </ClCompile>
     <Link>
@@ -127,12 +127,14 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="api\Config.cpp" />
     <ClCompile Include="api\Engine.cpp" />
     <ClCompile Include="api\libs\ProcMem.cpp" />
     <ClCompile Include="api\Offsets.cpp" />
     <ClCompile Include="Procker.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="api\Config.h" />
     <ClInclude Include="api\Engine.h" />
     <ClInclude Include="api\libs\ProcMem.h" />
     <ClInclude Include="api\Offsets.h" />
