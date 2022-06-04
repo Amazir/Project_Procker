@@ -5,11 +5,6 @@
 
 using namespace std;
 
-/*
-	Config loader system
-	Version: 0.0.1 Early Alpha
-*/
-
 class Config {
 public:
 	Config(string);
@@ -19,5 +14,10 @@ public:
 	bool BHop_Enabled;
 	DWORD BHop_Button;
 	int BHop_Interval;
+
+	// Triggerbot variables
+	bool TB_Enabled;
+	DWORD TB_Button;
+	int TB_Interval;
 
 };

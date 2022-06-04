@@ -7,9 +7,9 @@ using namespace std;
 	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 	%%%%%%% P R O C K E R | Professional Counter-Strike: Global Offensive cheats %%%%%%%%
 	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-	Version: 0.0.1 (Early Alpha build)
+	Version: 0.0.2 (Early Alpha build)
 	Author: AmaziR
-	Date of update: 03.06.2022
+	Date of update: 04.06.2022
 */
 
 int main(int argc, char** argv)
@@ -19,6 +19,7 @@ int main(int argc, char** argv)
     while (1) {
        // DWORD dwLocalPlayer = mem->dwClientAddress;
        // if(mem->Read(mem->dwClientAddress + 0x0) == 257)
+		this_thread::sleep_for(10ms);
     }
 
     return EXIT_SUCCESS;

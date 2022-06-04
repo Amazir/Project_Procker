@@ -10,6 +10,7 @@ Engine::Engine() {
 	// Getting modules
 	Alert(0, "Getting modules");
 	mem->Module("client.dll");
+	mem->Module("engine.dll");
 
 	// Create config's object
 	conf = new Config("data/configs/main.cfg");
@@ -35,6 +36,11 @@ void Engine::Threads() {
 	thread miscThread(&Engine::Thread_Misc, this);
 	miscThread.detach();
 	assert(!miscThread.joinable());
+
+	// Creating thread for triggerbot
+	thread triggerThread(&Engine::Thread_Trigger, this);
+	triggerThread.detach();
+	assert(!triggerThread.joinable());
 }
 
 void Engine::Thread_Misc() {
@@ -43,26 +49,50 @@ void Engine::Thread_Misc() {
 			********************************************************
 			************************** BHOP ************************
 			********************************************************
-		
-			Check if button is pressed
 		*/
+		// Check if AutoBH is enabled
 		if (conf->BHop_Enabled) {
+			// Check is button pressed
 			if (!(GetAsyncKeyState(conf->BHop_Button) & 0x8000))
 				continue;
-			// Get local player object
-			DWORD dwLocalPlayer =
-				mem->Read<DWORD>(mem->dwClientAddress + Offsets::dwLocalPlayer);
 
-			// Check is player on the floor
-			if (mem->Read<int>(dwLocalPlayer + Offsets::m_fFlags) == 257) {
-				// If player is grounded then force jump
-				mem->Write(mem->dwClientAddress + Offsets::dwForceJump, 6);
+			// Get local player's object
+			LocalPlayer * lp = new LocalPlayer(mem, Offsets::dwLocalPlayer);
+
+			// Check flags, if it's 257 then player is grounded
+			if (lp->getFlags() == 257) {
+				// Jump
+				lp->jump();
 				// Sleep for optimization
-				this_thread::sleep_for(1ms);
+				this_thread::sleep_for(chrono::milliseconds((int)conf->BHop_Interval));
 			}
 		}
-
 		// Sleep for optimization
 		this_thread::sleep_for(1ms);
+	}
+}
+
+void Engine::Thread_Trigger() {
+	while (1) {
+		/*
+			********************************************************
+			********************* TRIGGERBOT ***********************
+			********************************************************
+		*/
+		
+		this_thread::sleep_for(1ms);
+
+		LocalPlayer* lp = new LocalPlayer(mem, Offsets::dwLocalPlayer);
+		Entity* en = lp->inCrosshair();
+
+		if (!en)
+			continue;
+
+		if (!lp->isGoodTarget(en))
+			continue;
+
+		lp->shoot();
+
+		this_thread::sleep_for(chrono::milliseconds((int)10));
 	}
 }
