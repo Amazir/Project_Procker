@@ -25,6 +25,9 @@
     <Filter Include="Source Files\api\libs">
       <UniqueIdentifier>{1d5f324f-aa99-42c2-b4dc-fe29db778de2}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\api\structs">
+      <UniqueIdentifier>{0f876ca8-aa9c-49e7-8d9b-5dda3fec6e43}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Procker.cpp">
@@ -67,6 +70,9 @@
     </ClInclude>
     <ClInclude Include="api\LocalPlayer.h">
       <Filter>Header Files\api</Filter>
+    </ClInclude>
+    <ClInclude Include="api\structs\glow_t.h">
+      <Filter>Header Files\api\structs</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -1,6 +1,5 @@
 #include "Engine.h"
 
-
 Engine::Engine() {
 	// Getting into process
 	Alert(0, "Loading into CS:GO");
@@ -41,6 +40,18 @@ void Engine::Threads() {
 	thread triggerThread(&Engine::Thread_Trigger, this);
 	triggerThread.detach();
 	assert(!triggerThread.joinable());
+
+	// Creating thread for visuals
+}
+
+void Engine::Thread_Visuals() {
+	while (1) {
+		/*
+			********************************************************
+			************************** BHOP ************************
+			********************************************************
+		*/
+	}
 }
 
 void Engine::Thread_Misc() {

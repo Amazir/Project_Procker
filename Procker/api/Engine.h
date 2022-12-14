@@ -15,6 +15,7 @@ public:
 	void Threads();
 	void Thread_Misc();
 	void Thread_Trigger();
+	void Thread_Visuals();
 private:
 	ProcMem* mem;
 	Config* conf;

@@ -20,6 +20,7 @@ void log(string m) {
 
 Config::Config(string filePath) {
 	ifstream cfgFile(filePath);
+	vector<string> colors;
 	if (cfgFile.good()) {
 		string full_line;
 		int i = 1;
@@ -58,6 +59,7 @@ Config::Config(string filePath) {
 						******************* TRIGGERBOT CONFIG ******************
 						********************************************************
 					*/
+
 				case 7:
 					TB_Enabled = stoi(line[1]);
 					if (TB_Enabled)
@@ -74,6 +76,67 @@ Config::Config(string filePath) {
 				case 9:
 					// Checking interval
 					TB_Interval = stoi(line[1]);
+					break;
+
+					/*
+						********************************************************
+						******************* GLOW_ESP CONFIG ********************
+						********************************************************
+					*/
+				case 12:
+					GE_Enabled = stoi(line[1]);
+					if (GE_Enabled)
+						log("GlowESP is enabled");
+					else
+						log("GlowESP is disabled");
+					break;
+				case 13:
+					// Checking key
+					GE_Button = strtol(line[1].c_str(), 0, 0);
+					if(!GE_Button)
+						log("GlowESP key is disabled");
+					else
+						log("GlowESP key set for: ");
+					// TODO
+		
+					break;
+				case 14:
+					GE_Allies = stoi(line[1]);
+					if (GE_Allies)
+						log("GlowESP on allies is enabled");
+					else
+						log("GlowESP on allies is disabled");
+					break;
+				/*
+					COLOR:
+					0 - red
+					1 - green
+					2 - blue
+					3 - alpha
+				*/
+				case 15:
+					// allies color
+					colors = split(line[1], " ");
+					GE_CAllies.r = stoi(colors[0]);
+					GE_CAllies.g = stoi(colors[1]);
+					GE_CAllies.b = stoi(colors[2]);
+					GE_CAllies.a = stoi(colors[3]);
+					log("GlowESP allies color is set: rgba(red=" + colors[0] +
+						", green="+colors[1]+
+						", blue="+colors[2]+
+						", alpha="+colors[3]+")");
+					break;
+				case 16:
+					// enemies color
+					colors = split(line[1], " ");
+					GE_CEnemies.r = stoi(colors[0]);
+					GE_CEnemies.g = stoi(colors[1]);
+					GE_CEnemies.b = stoi(colors[2]);
+					GE_CEnemies.a = stoi(colors[3]);
+					log("GlowESP enemies color is set: rgba(red=" + colors[0] +
+						", green=" + colors[1] +
+						", blue=" + colors[2] +
+						", alpha=" + colors[3] + ")");
 					break;
 			}
 			i++;
