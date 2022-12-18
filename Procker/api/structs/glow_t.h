@@ -3,6 +3,7 @@
 struct glow_t
 {
 	float    flUnk1;
+
 	float            r;
 	float			 g;
 	float			 b;

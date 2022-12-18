@@ -6,6 +6,8 @@ Entity::Entity(ProcMem* m, DWORD adr) {
 	withClient = mem->Read<DWORD>(mem->dwClientAddress + adr);
 }
 
+Entity::~Entity() {}
+
 int Entity::getTeam() {
 	return mem->Read<int>(withClient + Offsets::m_iTeamNum);
 }
@@ -36,4 +38,8 @@ bool Entity::isAlive() {
 	if (isPlayer() && getHealth() > 0)
 		return true;
 	return false;
+}
+
+void Entity::setSpotted() {
+	mem->Write<bool>(withClient + Offsets::m_bSpotted, true);
 }

@@ -1,11 +1,11 @@
 #include "Offsets.h"
 
 namespace Offsets {
-	DWORD dwLocalPlayer = 0xDE8964;
-	DWORD dwForceJump = 0x52B9C0C;
-	DWORD dwForceAttack = 0x322BC8C;
-	DWORD dwEntityList = 0x4DFDE84;
-	DWORD dwGlowObjectManager = 0x5358958;
+	DWORD dwLocalPlayer = 0xDEA964;
+	DWORD dwForceJump = 0x52BBC9C;
+	DWORD dwForceAttack = 0x322DD10;
+	DWORD dwEntityList = 0x4DFFF14;
+	DWORD dwGlowObjectManager = 0x535A9D8;
 	DWORD m_iTeamNum = 0xF4;
 	DWORD m_iHealth = 0x100;
 	DWORD m_iCrosshairId = 0x11838;

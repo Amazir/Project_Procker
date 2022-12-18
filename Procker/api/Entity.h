@@ -7,6 +7,7 @@ public:
 
 	int getTeam(), getHealth(), getGlowIndex(), getFlags();
 	bool isDormant(), isAlive(), isPlayer();
+	void setSpotted();
 
 protected:
 	ProcMem * mem;

@@ -7,9 +7,9 @@ using namespace std;
 	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 	%%%%%%% P R O C K E R | Professional Counter-Strike: Global Offensive cheats %%%%%%%%
 	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-	Version: 0.0.2 (Early Alpha build)
+	Version: 0.0.3 (Early Alpha build)
 	Author: AmaziR
-	Date of update: 04.06.2022
+	Date of update: 18.12.2022
 */
 
 int main(int argc, char** argv)

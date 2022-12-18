@@ -126,6 +126,7 @@ Config::Config(string filePath) {
 						", blue="+colors[2]+
 						", alpha="+colors[3]+")");
 					break;
+
 				case 16:
 					// enemies color
 					colors = split(line[1], " ");
@@ -137,6 +138,27 @@ Config::Config(string filePath) {
 						", green=" + colors[1] +
 						", blue=" + colors[2] +
 						", alpha=" + colors[3] + ")");
+					break;
+					/*
+						********************************************************
+						******************** RADAR CONFIG **********************
+						********************************************************
+					*/
+				case 19:
+					RA_Enabled = stoi(line[1]);
+					if (RA_Enabled)
+						log("Radar is enabled");
+					else
+						log("Radar is disabled");
+					break;
+				case 20:
+					// Checking key
+					RA_Button = strtol(line[1].c_str(), 0, 0);
+					if (!RA_Button)
+						log("Radar key is disabled");
+					else
+						log("Radar key set for: ");
+					// TODO
 					break;
 			}
 			i++;

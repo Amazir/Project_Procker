@@ -1,5 +1,7 @@
 #include "LocalPlayer.h"
 
+LocalPlayer::~LocalPlayer() {}
+
 int LocalPlayer::getGlowBase() {
 	return mem->Read<int>(mem->dwClientAddress + Offsets::dwGlowObjectManager);
 }

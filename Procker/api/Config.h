@@ -28,4 +28,8 @@ public:
 	glow_t GE_CAllies;
 	glow_t GE_CEnemies;
 
+	// Radar
+	bool RA_Enabled;
+	DWORD RA_Button;
+
 };
