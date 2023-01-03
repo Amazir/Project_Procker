@@ -45,6 +45,9 @@ void Engine::Threads() {
 	thread visualsThread(&Engine::Thread_Visuals, this);
 	visualsThread.detach();
 	assert(!visualsThread.joinable());
+
+	// Creating thread for aimbot
+	
 }
 
 void Engine::Thread_Visuals() {
@@ -177,4 +180,8 @@ void Engine::Thread_Trigger() {
 
 		this_thread::sleep_for(chrono::milliseconds((int)10));
 	}
+}
+
+void Engine::Thread_Aimbot() {
+
 }

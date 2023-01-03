@@ -51,6 +51,12 @@
     <ClCompile Include="api\LocalPlayer.cpp">
       <Filter>Source Files\api</Filter>
     </ClCompile>
+    <ClCompile Include="api\libs\HttpClient.cpp">
+      <Filter>Source Files\api\libs</Filter>
+    </ClCompile>
+    <ClCompile Include="api\libs\HttpRequest.cpp">
+      <Filter>Source Files\api\libs</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="api\libs\ProcMem.h">
@@ -73,6 +79,12 @@
     </ClInclude>
     <ClInclude Include="api\structs\glow_t.h">
       <Filter>Header Files\api\structs</Filter>
+    </ClInclude>
+    <ClInclude Include="api\libs\HttpClient.h">
+      <Filter>Header Files\api\libs</Filter>
+    </ClInclude>
+    <ClInclude Include="api\libs\HttpRequest.h">
+      <Filter>Header Files\api\libs</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

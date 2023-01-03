@@ -16,6 +16,8 @@ public:
 	void Thread_Misc();
 	void Thread_Trigger();
 	void Thread_Visuals();
+	void Thread_Aimbot();
+	
 private:
 	ProcMem* mem;
 	Config* conf;

@@ -131,6 +131,8 @@
     <ClCompile Include="api\Config.cpp" />
     <ClCompile Include="api\Engine.cpp" />
     <ClCompile Include="api\Entity.cpp" />
+    <ClCompile Include="api\libs\HttpClient.cpp" />
+    <ClCompile Include="api\libs\HttpRequest.cpp" />
     <ClCompile Include="api\libs\ProcMem.cpp" />
     <ClCompile Include="api\LocalPlayer.cpp" />
     <ClCompile Include="api\Offsets.cpp" />
@@ -140,6 +142,8 @@
     <ClInclude Include="api\Config.h" />
     <ClInclude Include="api\Engine.h" />
     <ClInclude Include="api\Entity.h" />
+    <ClInclude Include="api\libs\HttpClient.h" />
+    <ClInclude Include="api\libs\HttpRequest.h" />
     <ClInclude Include="api\libs\ProcMem.h" />
     <ClInclude Include="api\LocalPlayer.h" />
     <ClInclude Include="api\Offsets.h" />
