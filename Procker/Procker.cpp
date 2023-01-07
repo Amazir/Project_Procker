@@ -8,12 +8,12 @@ using namespace std;
 	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 	%%%%%%% P R O C K E R | Professional Counter-Strike: Global Offensive cheats %%%%%%%%
 	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-	Version: 0.0.3 (Early Alpha build)
+	Version: 0.2 (Early Alpha build)
 	Author: AmaziR
-	Date of update: 18.12.2022
+	Date of update: 07.01.2023
 */
 
-bool dev_mode = true;
+bool dev_mode = false;
 
 void error(int code) {
 	if (!dev_mode) {
@@ -51,7 +51,13 @@ int main(int argc, char** argv)
 	}
 
 	if (auth(argv[1]) || dev_mode) {
-		Engine* engine = new Engine();
+		string config;
+		if (dev_mode)
+			config = "main.cfg";
+		else
+			config = argv[2];
+
+		Engine* engine = new Engine(config);
 		//for (int i = 0; i < argc; i++)
 		//	cout << "argument numer " << i << " to " << argv[i] << endl;
 

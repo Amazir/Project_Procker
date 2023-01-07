@@ -8,6 +8,20 @@ Entity::Entity(ProcMem* m, DWORD adr) {
 
 Entity::~Entity() {}
 
+DWORD Entity::getAddress() {
+	return address;
+}
+
+vector3 Entity::getBonePosition(int boneID) {
+
+	DWORD boneBase = mem->Read<DWORD>(withClient + Offsets::m_dwBoneMatrix);
+	vector3 bone;
+	bone.x = mem->Read<float>(boneBase + (0x30 * boneID) + 0x0C);
+	bone.y = mem->Read<float>(boneBase + (0x30 * boneID) + 0x1C);
+	bone.z = mem->Read<float>(boneBase + (0x30 * boneID) + 0x2C);
+	return bone;
+}
+
 int Entity::getTeam() {
 	return mem->Read<int>(withClient + Offsets::m_iTeamNum);
 }

@@ -57,6 +57,9 @@
     <ClCompile Include="api\libs\HttpRequest.cpp">
       <Filter>Source Files\api\libs</Filter>
     </ClCompile>
+    <ClCompile Include="api\Maths.cpp">
+      <Filter>Source Files\api</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="api\libs\ProcMem.h">
@@ -85,6 +88,12 @@
     </ClInclude>
     <ClInclude Include="api\libs\HttpRequest.h">
       <Filter>Header Files\api\libs</Filter>
+    </ClInclude>
+    <ClInclude Include="api\structs\vector3.h">
+      <Filter>Header Files\api\structs</Filter>
+    </ClInclude>
+    <ClInclude Include="api\Maths.h">
+      <Filter>Header Files\api</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

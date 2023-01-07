@@ -1,5 +1,6 @@
 #pragma once
 #include "Windows.h"
+#include "Maths.h"
 //#include "../engine/maths.h"
 
 namespace Offsets {

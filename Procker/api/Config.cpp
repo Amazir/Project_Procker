@@ -160,6 +160,43 @@ Config::Config(string filePath) {
 						log("Radar key set for: ");
 					// TODO
 					break;
+					/*
+						********************************************************
+						******************** AIMBOT CONFIG *********************
+						********************************************************
+					*/
+				case 23:
+					Aim_Enabled = stoi(line[1]);
+					if (Aim_Enabled)
+						log("Aimbot is enabled");
+					else
+						log("Aimbot is disabled");
+					break;
+				case 24:
+					Aim_RCS_Enabled = stoi(line[1]);
+					if (Aim_RCS_Enabled)
+						log("Aimbot RCS is enabled");
+					else
+						log("Aimbot RCS is disabled");
+					break;
+				case 25:
+					Aim_Fov = stoi(line[1]);
+					log("Aimbot Fov is set for: "); // TODO
+					break;
+				case 26:
+					Aim_Bone = stoi(line[1]);
+					// TODO
+					log("Aimbot Bone is set for: ");
+					break;
+				case 27:
+					Aim_Smooth = stoi(line[1]);
+					log("Aimbot Smooth is set for: "); // TODO
+					break;
+				case 28:
+					Aim_Key = strtol(line[1].c_str(), 0, 0);
+					log("Aimbot Key is set for: "); // TODO
+					break;
+
 			}
 			i++;
 		}

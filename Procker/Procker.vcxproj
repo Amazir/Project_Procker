@@ -135,6 +135,7 @@
     <ClCompile Include="api\libs\HttpRequest.cpp" />
     <ClCompile Include="api\libs\ProcMem.cpp" />
     <ClCompile Include="api\LocalPlayer.cpp" />
+    <ClCompile Include="api\Maths.cpp" />
     <ClCompile Include="api\Offsets.cpp" />
     <ClCompile Include="Procker.cpp" />
   </ItemGroup>
@@ -146,8 +147,10 @@
     <ClInclude Include="api\libs\HttpRequest.h" />
     <ClInclude Include="api\libs\ProcMem.h" />
     <ClInclude Include="api\LocalPlayer.h" />
+    <ClInclude Include="api\Maths.h" />
     <ClInclude Include="api\Offsets.h" />
     <ClInclude Include="api\structs\glow_t.h" />
+    <ClInclude Include="api\structs\vector3.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

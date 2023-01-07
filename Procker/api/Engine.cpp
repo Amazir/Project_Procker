@@ -1,6 +1,6 @@
 #include "Engine.h"
 
-Engine::Engine() {
+Engine::Engine(string config) {
 	// Getting into process
 	Alert(0, "Loading into CS:GO");
 	mem = new ProcMem(); 
@@ -12,10 +12,14 @@ Engine::Engine() {
 	mem->Module("engine.dll");
 
 	// Create config's object
-	conf = new Config("data/configs/main.cfg");
+	conf = new Config("data/configs/"+config);
 
 	// Starting threads
 	Threads();
+}
+
+Engine::~Engine() {
+	delete mem;
 }
 
 void Engine::Alert(int type, string msg) {
@@ -47,7 +51,9 @@ void Engine::Threads() {
 	assert(!visualsThread.joinable());
 
 	// Creating thread for aimbot
-	
+	thread aimbotThread(&Engine::Thread_Aimbot, this);
+	aimbotThread.detach();
+	assert(!aimbotThread.joinable());
 }
 
 void Engine::Thread_Visuals() {
@@ -113,7 +119,7 @@ void Engine::Thread_Visuals() {
 			delete(enm);
 		}
 		delete (lp);
-		this_thread::sleep_for(chrono::milliseconds((int)5));
+		this_thread::sleep_for(chrono::milliseconds((int)15));
 	}
 }
 
@@ -155,8 +161,14 @@ void Engine::Thread_Trigger() {
 			********************* TRIGGERBOT ***********************
 			********************************************************
 		*/
-		
+		// TODO LEAKI PAMIECI
 		this_thread::sleep_for(1ms);
+
+		if (!conf->TB_Enabled)
+			continue;
+
+		if (!(GetAsyncKeyState(conf->TB_Button)))
+			continue;
 
 		LocalPlayer* lp = new LocalPlayer(mem, Offsets::dwLocalPlayer);
 		Entity* en = lp->inCrosshair();
@@ -183,5 +195,54 @@ void Engine::Thread_Trigger() {
 }
 
 void Engine::Thread_Aimbot() {
+	/*
+		********************************************************
+		************************ AIMBOT ************************
+		********************************************************
+	*/
+
+	vector3 oldAngle;
+
+	while (1) {
+		if (!conf->Aim_Enabled)
+			continue;
+
+		if (!(GetAsyncKeyState(conf->Aim_Key)))
+			continue;
+
+		LocalPlayer* lp = new LocalPlayer(mem, Offsets::dwLocalPlayer);
+		
+		Entity * e = lp->getClosestEnemy(conf->Aim_Bone, conf->Aim_Fov);
+		//cout << "test" << endl;
+		lp->aimAt(e, conf->Aim_Smooth);
+		
+		int shotsFired = lp->getShotsFired();
+		if (shotsFired > 1) {
+			vector3 punchAngle = lp->getPunchAngle();
+			vector3 viewAngles = lp->getViewAngles();
+
+			viewAngles.x += oldAngle.x;
+			viewAngles.y += oldAngle.y;
+
+			vector3 finalAngle;
+			finalAngle.x = viewAngles.x - punchAngle.x * 2.0f;
+			finalAngle.y = viewAngles.y - punchAngle.y * 2.0f;
+
+			Maths::Normalize(finalAngle);
+			lp->setViewAngles(finalAngle);
+
+			oldAngle.x = punchAngle.x * 1.8f;
+			oldAngle.y = punchAngle.y * 1.8f;
+		}
+		else {
+			oldAngle.x = 0;
+			oldAngle.y = 0;
+
+		}
+
+		delete(e);
+		delete(lp);
+		this_thread::sleep_for(chrono::milliseconds((int)10));
+	}
 
 }

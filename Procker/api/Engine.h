@@ -8,7 +8,7 @@ using namespace std;
 
 class Engine {
 public:
-	Engine();
+	Engine(string);
 	~Engine();
 
 	void Alert(int, string);

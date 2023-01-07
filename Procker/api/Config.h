@@ -32,4 +32,10 @@ public:
 	bool RA_Enabled;
 	DWORD RA_Button;
 
+	// Aimbot
+	bool Aim_Enabled, Aim_RCS_Enabled;
+	float Aim_Fov, Aim_Smooth;
+	int Aim_Bone;
+	DWORD Aim_Key;
+
 };
