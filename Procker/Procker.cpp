@@ -58,12 +58,8 @@ int main(int argc, char** argv)
 			config = argv[2];
 
 		Engine* engine = new Engine(config);
-		//for (int i = 0; i < argc; i++)
-		//	cout << "argument numer " << i << " to " << argv[i] << endl;
 
 		while (1) {
-			// DWORD dwLocalPlayer = mem->dwClientAddress;
-			// if(mem->Read(mem->dwClientAddress + 0x0) == 257)
 			this_thread::sleep_for(1000ms);
 		}
 	}
