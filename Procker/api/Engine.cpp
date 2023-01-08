@@ -211,9 +211,16 @@ void Engine::Thread_Aimbot() {
 			continue;
 
 		LocalPlayer* lp = new LocalPlayer(mem, Offsets::dwLocalPlayer);
-		
-		Entity * e = lp->getClosestEnemy(conf->Aim_Bone, conf->Aim_Fov);
-		//cout << "test" << endl;
+
+		DWORD addr = lp->getClosestEnemy(conf->Aim_Bone, conf->Aim_Fov);
+
+		if (!addr) {
+			delete(lp);
+			continue;
+		}
+
+		Entity * e = new Entity(mem, addr);
+
 		lp->aimAt(e, conf->Aim_Smooth);
 		
 		int shotsFired = lp->getShotsFired();

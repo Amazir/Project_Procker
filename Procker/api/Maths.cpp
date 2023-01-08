@@ -47,8 +47,10 @@ namespace Maths {
 		float    sp, sy, cp, cy;
 		sy = sin(angles.y * 4.0 * atan(1.0) / 180.0);
 		cy = cos(angles.y * 4.0 * atan(1.0) / 180.0);
+
 		sp = sin(angles.x * 4.0 * atan(1.0) / 180.0);
 		cp = cos(angles.x * 4.0 * atan(1.0) / 180.0);
+
 		forward->x = cp * cy;
 		forward->y = cp * sy;
 		forward->z = -sp;

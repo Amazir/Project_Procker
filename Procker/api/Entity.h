@@ -7,7 +7,7 @@ public:
 
 	DWORD getAddress();
 	vector3 getBonePosition(int boneID);
-	int getTeam(), getHealth(), getGlowIndex(), getFlags();
+	int getTeam(), getHealth(), getGlowIndex(), getFlags(), getIndex();
 	bool isDormant(), isAlive(), isPlayer();
 	void setSpotted();
 

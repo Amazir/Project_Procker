@@ -9,9 +9,8 @@ public:
 		setViewAngles(vector3);
 	bool isGoodTarget(Entity*);
 	vector3 getViewAngles(), getEyePosition(), getPunchAngle();
-	Entity* getClosestEnemy(int, float);
+	DWORD getClosestEnemy(int, float);
 	Entity* inCrosshair();
 private:
-	Entity* bestEnemy;
 	Entity* enemy;
 };

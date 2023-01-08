@@ -57,12 +57,17 @@ void LocalPlayer::aimAt(Entity* enm, float smooth) {
 	}
 }
 
-Entity* LocalPlayer::getClosestEnemy(int bone, float fov) {
-	bestEnemy = new Entity(mem, 0);
-	float bestFov = 90.0f;
+DWORD LocalPlayer::getClosestEnemy(int bone, float fov) {
+	float bestFov = fov;
+	DWORD addr=0;
 
 	for (int i = 0; i <= 64; i++) {
 		enemy = new Entity(mem, Offsets::dwEntityList + ((i - 1) * 0x10));
+
+		if (getIndex() == enemy->getIndex()) {
+			delete enemy;
+			continue;
+		}
 
 		if (!enemy->isAlive()) {
 			delete enemy;
@@ -92,17 +97,16 @@ Entity* LocalPlayer::getClosestEnemy(int bone, float fov) {
 		}
 
 		vector3 aimAngle = Maths::CalcAngle(getEyePosition(), enemyHeadPosition);
-		float fov = Maths::GetFov(getViewAngles(), aimAngle);
+		float fov2 = Maths::GetFov(getViewAngles(), aimAngle);
 
-		if (fov < bestFov) {
-			bestEnemy = enemy;
-			bestFov = fov;
+		if (fov2 < bestFov) {
+			addr = enemy->getAddress();
+			bestFov = fov2;
 		}
-		
-		//free(enemy);
+		delete enemy;
 	}
-	//delete enemy;
-	return bestEnemy;
+	return addr;
+
 }
 
 vector3 LocalPlayer::getEyePosition() {

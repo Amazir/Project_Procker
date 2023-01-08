@@ -26,6 +26,10 @@ int Entity::getTeam() {
 	return mem->Read<int>(withClient + Offsets::m_iTeamNum);
 }
 
+int Entity::getIndex() {
+	return mem->Read<int>(withClient + 0x64);
+}
+
 int Entity::getHealth() {
 	return mem->Read<int>(withClient + Offsets::m_iHealth);
 }

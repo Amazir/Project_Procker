@@ -13,7 +13,7 @@ using namespace std;
 	Date of update: 07.01.2023
 */
 
-bool dev_mode = false;
+bool dev_mode = true;
 
 void error(int code) {
 	if (!dev_mode) {
